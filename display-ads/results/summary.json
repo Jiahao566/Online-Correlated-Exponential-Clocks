@@ -1,0 +1,41 @@
+{
+  "run_id": "3353e9a7-9521-4ff9-a85d-06df76ecd552",
+  "lambda": "9/2",
+  "precision_bits": 160,
+  "potential_integration_cells": 8192,
+  "potential_table_cells": 8192,
+  "python": "3.12.14",
+  "python_flint": "0.9.0",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "source_sha256": {
+    "verify.py": "199faad4f132570678d2adbaf07a7c37cf0f87f53ba88fa337309c6cecd90f14",
+    "verify_small.py": "183016aa9b9d19e7816c43d51907c026775cb6bb7452789dc8b691179185b90e",
+    "verify_large.py": "b9c202e9c8717fc82f5322d647d2ed1370eda0dba66907b523e788e43adfb120",
+    "potential.py": "3e5001165977ea2cb5d3627e417e3acd75b5b2e760ccbd4e08e66d23a8e378ed"
+  },
+  "complete": true,
+  "status": "passed",
+  "mode": "all",
+  "full_request_range_certified": true,
+  "potential_table_builds": 1,
+  "parts": {
+    "small": {
+      "file": "small.json",
+      "complete": true,
+      "minimum_lower_bound": "[0.12770825049193931515619994293715061523305894113 +/- 1.90e-48]",
+      "certificate_seconds": 108.24237479500152,
+      "request_intervals": 128
+    },
+    "large": {
+      "file": "large.json",
+      "complete": true,
+      "minimum_lower_bound": "[0.00061320874369774444251024304996394669383535420606 +/- 3.90e-51]",
+      "certificate_seconds": 131.17265978400246,
+      "request_intervals": 144
+    }
+  },
+  "potential_table_seconds": 42.22800749099406,
+  "gamma_zero_lower": "[0.44237045106467455100651631443773763745468905429 +/- 2.59e-48]",
+  "gamma_zero_upper": "[0.44250406294554816566212942662179769278566685481 +/- 1.66e-48]",
+  "total_seconds": 281.64721128000383
+}
