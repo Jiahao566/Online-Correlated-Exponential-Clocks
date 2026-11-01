@@ -1,0 +1,54 @@
+{
+  "completed": true,
+  "passed": true,
+  "recomputed": true,
+  "score": "103/100 - Ein(9/2) + Ein(9*z/2)",
+  "alpha": "(exp(-9*x/2)-x*exp(-9/2))*(1+x/100+13*x*x/10)",
+  "statement": "M_x H(z) >= alpha(x) H(z) for every x,z in [0,1]",
+  "normalization": "(M_x H(z)-alpha(x) H(z))/(x*(1-x))",
+  "domains": [
+    "old",
+    "young"
+  ],
+  "charts": {
+    "old": "z=exp(-9*x/2)*u",
+    "young": "z=exp(-9*x*u/2)"
+  },
+  "rectangles": 1810,
+  "minimum_normalized_defect": 5.0379174952394314e-05,
+  "minimum_normalized_defect_exact": "1858663493982913/36893488147419103232",
+  "minimum_by_domain": {
+    "old": {
+      "rectangles": 629,
+      "bound": 5.0379174952394314e-05,
+      "bound_exact": "1858663493982913/36893488147419103232"
+    },
+    "young": {
+      "rectangles": 1181,
+      "bound": 0.00013190316897595955,
+      "bound_exact": "4866368001221583/36893488147419103232"
+    }
+  },
+  "delta_lower_exact": "-6208177811083703992176244528801937261380849017433269793/15044435643359991439949562891761061952996042231653597184000000000000000000",
+  "delta_upper_exact": "-3693141686820369076755907784006551046338575168447253/8949694017465789077899799459703189740033338626801664000000000000000000",
+  "delta_enclosure_decimal": [
+    -4.126560781842118e-19,
+    -4.126556371215611e-19
+  ],
+  "transfer_allowance_exact": "6208177811083703992176244528801937261380849017433269793/697793861009276040813987147113221797448796021876326400000000000000000000",
+  "transfer_allowance_decimal": 8.896865045651608e-18,
+  "analytic_endpoint_argument": "M_0=Id, alpha(0)=1; M_1=0, alpha(1)=0",
+  "initial_score_argument": "pi H = 3/100 + (1-exp(-9/2))/(9/2) > 0",
+  "alpha_nonnegative_argument": "exp(-9*x/2) >= exp(-9/2) >= x*exp(-9/2)",
+  "files": [
+    "score-old.json",
+    "score-young.json"
+  ],
+  "source_sha256": {
+    "interval/verify_score.py": "59581ed8774883cd5c25a77ca3b46024d0e1b001abb7c9a83d17601fb1f355be",
+    "moment_kernel.py": "176c591e2bd6545fc25656de7b1486be07926fbd289a8f95bfe956e96069980f",
+    "verify_moment.py": "ff796fbe6cbc12c593146807af3460e62ed817443d11f0db95f82d7d2dc5764a",
+    "check_cover.py": "346d96b677c90053aea177bc410ad51b86c6c8a966bcebd835d6d49da13ab040"
+  },
+  "seconds": 43.379304160000174
+}
