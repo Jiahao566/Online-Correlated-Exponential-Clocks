@@ -6,7 +6,7 @@ Verification code and certificates for the paper's potential inequalities:
   scripts and results in [`display-ads/`](display-ads/).
 - [AdWords](#adwords-potential-verification): scripts, candidate prices, and
   certificates in [`adwords/`](adwords/).
-- [Load Balancing](#load-balancing-potential-verification): scripts and results
+- [Load Balancing](#load-balancing-verification): scripts and results
   in [`load-balancing/`](load-balancing/).
 
 ## Matching and Display Ads potential verification
