@@ -6,6 +6,8 @@ Verification code and certificates for the paper's potential inequalities:
   scripts and results in [`display-ads/`](display-ads/).
 - [AdWords](#adwords-potential-verification): scripts, candidate prices, and
   certificates in [`adwords/`](adwords/).
+- [Load Balancing](#load-balancing-potential-verification): scripts and results
+  in [`load-balancing/`](load-balancing/).
 
 ## Matching and Display Ads potential verification
 
@@ -403,3 +405,56 @@ runs certify the same `53/100` ratio. Numerical library versions can change
 valid proposals, witnesses, partitions, and positive margins. Use
 `--audit-existing` to check the precise supplied paper certificate and a
 fresh run to regenerate all enclosures in your environment.
+
+## Load Balancing verification
+
+The scripts in [`load-balancing/`](load-balancing/) verify the numerical bounds used in the covariance and amortized analyses for minimizing squared loads on unrelated machines.
+
+### Run
+
+From the repository root:
+
+```bash
+cd load-balancing
+python -m pip install python-flint sympy
+
+python verify_kernel.py
+python verify_reserve.py
+python verify_kappa.py
+python verify_credit_reserve.py
+python verify_local.py
+python check_uncapped_example.py
+```
+
+Use Python without `-O`, since the scripts use assertions. A successful run finishes without an assertion or verification error.
+
+### Verification
+
+| Script | What it verifies | Method |
+|---|---|---|
+| [`verify_kernel.py`](load-balancing/verify_kernel.py) | The finite-grid inequalities for the covariance kernel. | Interval arithmetic and lower Riemann sums. |
+| [`verify_reserve.py`](load-balancing/verify_reserve.py) | The integral bound for the reserve and potential. | Interval arithmetic. |
+| [`verify_kappa.py`](load-balancing/verify_kappa.py) | The integral bound used in the constraints on `kappa`. | Interval arithmetic. |
+| [`verify_credit_reserve.py`](load-balancing/verify_credit_reserve.py) | The positive-part integral bound in the credit–reserve constraint. | Interval bounds on integration cells, plus a bound on the tail. |
+| [`verify_local.py`](load-balancing/verify_local.py) | The three polynomial cases of the local amortized inequality. | Exact arithmetic and subdivision. |
+| [`check_uncapped_example.py`](load-balancing/check_uncapped_example.py) | The example where the uncapped reserve fails the amortized comparison. | Interval arithmetic. |
+
+The main results are:
+
+- The kernel verifier checks all **22,500,000** inequalities in the paper's finite grid, together with **1,500** additional checks at `s = 3/2`.
+- The reserve coefficient is less than `0.00539`; the integral of `delta` is between `0.219` and `0.22`; and the positive-part integral is less than `0.004`.
+- The local polynomial verifier terminates with **8,056 boxes**: `7,953`, `22`, and `81` in the three cases.
+- In the uncapped-reserve example, the normalized slack on the final job is approximately `-0.0222`, showing that the amortized comparison fails.
+
+These scripts verify the numerical bounds. The analytic reductions and the extension of the kernel bound to the infinite tail are given in the paper.
+
+### Figure
+
+To generate the covariance-kernel comparison figure, first run `verify_kernel.py`, which writes `kernel_bounds.csv`. Then run:
+
+```bash
+python -m pip install numpy matplotlib
+python plot_kernel.py
+```
+
+The script [`plot_kernel.py`](load-balancing/plot_kernel.py) writes `selected-kernel-comparison.pdf` using the certified lower bounds in `kernel_bounds.csv`.
